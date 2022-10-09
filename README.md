@@ -1,3 +1,31 @@
+# FIE Cirkis Branch of AutoVC
+
+This is a branch of a specific version of AutoVC found originally at: 
+https://github.com/cyhuang-tw/AutoVC
+
+It's purpose is to be used internally at FIE LLC within the 'cirkis' project.
+
+The main differences from the original are/will be:
+
+- bug fixes
+- addition of a setup.py
+
+### Deployment
+for development probably:
+```
+pip install -e ./
+```
+or just usage:
+```
+pip install ./
+```
+
+---
+
+The original documentation follows below
+
+---
+
 ## <span style="font-variant:small-caps;">AutoVC</span>: Zero-Shot Voice Style Transfer with Only Autoencoder Loss
 
 This is an unofficial implementation of <span style="font-variant:small-caps;">AutoVC</span> based on the official one.
