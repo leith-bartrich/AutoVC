@@ -1,5 +1,6 @@
 import argparse
 import json
+import os.path
 import random
 from collections import defaultdict
 from functools import partial
@@ -61,10 +62,13 @@ def main(
         dummy = [
             torch.save(mel.cpu(), save_dir / path) for path, mel in zip(rnd_paths, mels)
         ]
-        emb_path = f"embed/{spk}.pt"
+        spk_name = os.path.basename(spk)
+        emb_path = f"embed/{spk_name}.pt"
         torch.save(embed.cpu(), save_dir / emb_path)
-        meta_data[spk] = {"embed": emb_path, "uttrs": rnd_paths}
-    json.dump(meta_data, (save_dir / "metadata.json").open(mode="w"))
+        meta_data[spk_name] = {"embed": str(emb_path), "uttrs": rnd_paths}
+    meta_data_path = os.path.join(save_dir,"metadata.json")
+    with open(meta_data_path,'w') as f:
+        json.dump(meta_data, f)
 
 
 if __name__ == "__main__":

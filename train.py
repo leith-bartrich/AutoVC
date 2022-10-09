@@ -10,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm.auto import trange
 
 from data import SpeakerDataset
-from modules import AutoVC
+from modules.models import AutoVC
 
 
 def main(
