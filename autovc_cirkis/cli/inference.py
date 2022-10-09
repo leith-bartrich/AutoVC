@@ -11,7 +11,7 @@ import torchaudio
 from torch import Tensor
 from torch.nn.functional import pad
 
-from data import Wav2Mel
+from autovc_cirkis.data import Wav2Mel
 
 
 def chunks(lst: List, n: int) -> List[List]:
@@ -61,7 +61,7 @@ def main(
     sf.write(output, wav.astype(np.float32), wav2mel.sample_rate)
 
 
-if __name__ == "__main__":
+def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument("model_path", type=Path)
     parser.add_argument("vocoder_path", type=Path)
@@ -69,3 +69,7 @@ if __name__ == "__main__":
     parser.add_argument("target", type=Path)
     parser.add_argument("output", type=Path)
     main(**vars(parser.parse_args()))
+
+
+if __name__ == "__main__":
+    cli()

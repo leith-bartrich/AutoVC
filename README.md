@@ -11,6 +11,12 @@ The main differences from the original are/will be:
 - addition of a setup.py
 
 ### Deployment
+Right now, this implementation seems dependent on SOX.  SOX only really works by default on linux at
+this time (2022).
+Though it is possible to custom compile a version of torchaudio for windows that uses SOX, such a
+deployment isn't common.  Therefore using linux or WSL (on windows) is probaly the preferred deployment
+solution.
+
 for development probably:
 ```
 pip install -e ./

@@ -15,7 +15,7 @@ from torch import Tensor
 from torch.multiprocessing import Pool, cpu_count, set_start_method
 from tqdm import tqdm
 
-from data import Wav2Mel
+from autovc_cirkis.data import Wav2Mel
 
 
 def embed_uttrs(encoder: nn.Module, uttrs: List[Tensor], seg_len: int):
@@ -71,7 +71,7 @@ def main(
         json.dump(meta_data, f)
 
 
-if __name__ == "__main__":
+def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument("data_dir", type=Path)
     parser.add_argument("save_dir", type=Path)
@@ -79,3 +79,7 @@ if __name__ == "__main__":
     parser.add_argument("--seg_len", type=int, default=128)
     parser.add_argument("--n_workers", type=int, default=cpu_count())
     main(**vars(parser.parse_args()))
+
+
+if __name__ == "__main__":
+    cli()

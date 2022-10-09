@@ -9,8 +9,8 @@ from torch.utils.data.dataloader import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from tqdm.auto import trange
 
-from data import SpeakerDataset
-from modules.models import AutoVC
+from autovc_cirkis.data import SpeakerDataset
+from autovc_cirkis.modules.models import AutoVC
 
 
 def main(
@@ -89,7 +89,7 @@ def main(
         )
 
 
-if __name__ == "__main__":
+def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument("config_path", type=Path)
     parser.add_argument("data_dir", type=Path)
@@ -100,3 +100,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=2)
     parser.add_argument("--seg_len", type=int, default=128)
     main(**vars(parser.parse_args()))
+
+
+if __name__ == "__main__":
+    cli()
